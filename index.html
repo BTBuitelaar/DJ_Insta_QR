@@ -36,6 +36,32 @@ body {
     to { opacity: 1; transform: scale(1); }
 }
 
+.logo-wrapper {
+    position: relative;
+    width: 175px;
+    height: 175px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 175px;
+    height: auto;
+    display: block;
+}
+
+.stars-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+    pointer-events: none;
+}
+
 .text-block {
     display: flex;
     flex-direction: column;
@@ -84,6 +110,10 @@ body {
 </head>
 <body>
 <div class="loading-container">
+    <div class="logo-wrapper">
+        <img src="logo.png" alt="Doric Jewelry Logo" class="logo">
+        <img src="stars.gif" alt="Sterren" class="stars-overlay">
+    </div>
     <div class="text-block">
         <p class="loading-text">Loading Ancient Magic</p>
         <p class="loading-dots"></p>
