@@ -1,11 +1,93 @@
 <!DOCTYPE html>
-  <html lang="nl">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://www.instagram.com/doric_jewelry">
-    <title>Doric Jewelry op Instagram</title>
-  </head>
-  <body>
-    <p>Je wordt doorgestuurd naar <a href="https://www.instagram.com/doric_jewelry">@doric_jewelry op Instagram</a>.</p>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doric Jewelry</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .logo {
+      width: 140px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .stars {
+      width: 180px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .loading-text {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .dots::after {
+      content: '';
+      animation: dotContent 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dotContent {
+      0%   { content: ''; }
+      25%  { content: '.'; }
+      50%  { content: '..'; }
+      75%  { content: '...'; }
+      100% { content: ''; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <img src="logo.png" alt="Doric Jewelry Logo" class="logo">
+    <img src="stars.gif" alt="Twinkelende sterren" class="stars">
+    <p class="loading-text">Loading Ancient Magic<span class="dots"></span></p>
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = 'https://www.instagram.com/doric_jewelry';
+    }, 3000);
+  </script>
 </body>
 </html>
