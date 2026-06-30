@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Georgia', serif;
+    font-family: Georgia, serif;
     overflow: hidden;
 }
 
@@ -45,17 +45,24 @@ body {
 }
 
 .video-wrapper {
-    width: 263px; /* 50% groter dan 175px */
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 36px;
+    overflow: visible;
 }
 
 video {
-    width: 100%;
+    width: 175px;
     height: auto;
     display: block;
     pointer-events: none;
     user-select: none;
     -webkit-user-select: none;
+    transform: scale(1.5);
+    transform-origin: center center;
 }
 
 .text-block {
@@ -85,16 +92,16 @@ video {
 }
 
 .loading-dots::after {
-    content: '';
+    content: "";
     animation: dotContent 1.5s steps(4, end) infinite;
 }
 
 @keyframes dotContent {
-    0% { content: ''; }
-    25% { content: '.'; }
-    50% { content: '..'; }
-    75% { content: '...'; }
-    100% { content: ''; }
+    0% { content: ""; }
+    25% { content: "."; }
+    50% { content: ".."; }
+    75% { content: "..."; }
+    100% { content: ""; }
 }
 
 @keyframes pulse {
@@ -109,7 +116,7 @@ video {
 
 <div class="loading-container">
     <div class="video-wrapper">
-        <video autoplay muted playsinline disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+        <video autoplay muted playsinline preload="auto" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
             <source src="DJ_Logo_Vine_Video.mp4" type="video/mp4">
         </video>
     </div>
@@ -122,7 +129,7 @@ video {
 
 <script>
 setTimeout(function () {
-    window.location.href = 'https://www.instagram.com/doric_jewelry';
+    window.location.href = "https://www.instagram.com/doric_jewelry";
 }, 5000);
 </script>
 
