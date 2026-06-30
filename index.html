@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Doric Jewelry</title>
+
 <style>
 * {
     margin: 0;
@@ -33,17 +34,23 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .video-wrapper {
-    width: 175px;
+    width: 263px; /* 50% groter dan 175px */
     margin-bottom: 36px;
 }
 
 video {
-    width: 175px;
+    width: 100%;
     height: auto;
     display: block;
     pointer-events: none;
@@ -97,13 +104,16 @@ video {
 }
 </style>
 </head>
+
 <body>
+
 <div class="loading-container">
     <div class="video-wrapper">
         <video autoplay muted playsinline disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
             <source src="DJ_Logo_Vine_Video.mp4" type="video/mp4">
         </video>
     </div>
+
     <div class="text-block">
         <p class="loading-text">Loading Ancient Magic</p>
         <p class="loading-dots"></p>
@@ -111,9 +121,10 @@ video {
 </div>
 
 <script>
-setTimeout(function() {
+setTimeout(function () {
     window.location.href = 'https://www.instagram.com/doric_jewelry';
 }, 5000);
 </script>
+
 </body>
 </html>
