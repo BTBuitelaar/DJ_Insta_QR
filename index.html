@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,7 +99,14 @@ video{
 
 <div class="loading-container">
 
-<video autoplay muted playsinline preload="auto" disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback">
+<video
+    id="introVideo"
+    autoplay
+    muted
+    playsinline
+    webkit-playsinline
+    preload="auto"
+>
     <source src="DJ_Logo_Vine_Video.mp4" type="video/mp4">
 </video>
 
@@ -113,9 +120,28 @@ video{
 </div>
 
 <script>
-setTimeout(function(){
+const video = document.getElementById("introVideo");
+
+function redirect() {
     window.location.href = "https://www.instagram.com/doric_jewelry";
-}, 5000);
+}
+
+// Try autoplay
+video.play().catch(() => {
+    document.addEventListener(
+        "touchstart",
+        () => {
+            video.play();
+        },
+        { once: true }
+    );
+});
+
+// Redirect when the video finishes
+video.addEventListener("ended", redirect);
+
+// Fallback after 5 seconds
+setTimeout(redirect, 5000);
 </script>
 
 </body>
