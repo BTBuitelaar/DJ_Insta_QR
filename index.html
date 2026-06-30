@@ -12,8 +12,7 @@
     box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     width:100%;
     height:100%;
 }
@@ -23,8 +22,8 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:Georgia, serif;
     overflow:hidden;
+    font-family:Georgia,serif;
 }
 
 .loading-container{
@@ -41,7 +40,7 @@ video{
     width:350px;
     height:auto;
     display:block;
-    margin:0 auto 40px auto;
+    margin:0 auto 40px;
     transform:translateX(7px);
 }
 
@@ -49,26 +48,21 @@ video{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
     gap:4px;
     font-size:26px;
     font-weight:600;
-    color:#666666;
     letter-spacing:3px;
     text-transform:uppercase;
     line-height:1.2;
+    color:#000000;
     animation:pulse 1.5s ease-in-out infinite;
-}
-
-.loading-text span{
-    display:block;
 }
 
 .loading-dots{
     font-size:26px;
     font-weight:600;
-    color:#666666;
     letter-spacing:3px;
+    color:#000000;
     height:1.4em;
     margin-top:6px;
     animation:pulse 1.5s ease-in-out infinite;
@@ -76,10 +70,34 @@ video{
 
 .loading-dots::after{
     content:"";
-    animation:dotContent 1.5s steps(4,end) infinite;
+    animation:dots 1.5s steps(4,end) infinite;
 }
 
-@keyframes dotContent{
+.tap-button{
+    display:none;
+    margin-top:40px;
+    padding:14px 34px;
+    border:1px solid #000;
+    background:#fff;
+    color:#000;
+    font-family:Georgia,serif;
+    font-size:16px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.tap-button:hover{
+    background:#000;
+    color:#fff;
+}
+
+.tap-button.show{
+    display:block;
+}
+
+@keyframes dots{
     0%{content:"";}
     25%{content:".";}
     50%{content:"..";}
@@ -88,9 +106,8 @@ video{
 }
 
 @keyframes pulse{
-    0%{opacity:1;}
+    0%,100%{opacity:1;}
     50%{opacity:.4;}
-    100%{opacity:1;}
 }
 </style>
 </head>
@@ -100,48 +117,59 @@ video{
 <div class="loading-container">
 
 <video
-    id="introVideo"
-    autoplay
-    muted
-    playsinline
-    webkit-playsinline
-    preload="auto"
->
-    <source src="DJ_Logo_Vine_Video.mp4" type="video/mp4">
+id="introVideo"
+muted
+playsinline
+webkit-playsinline
+preload="auto"
+autoplay>
+
+<source src="DJ_Logo_Vine_Video.mp4" type="video/mp4">
+
 </video>
 
 <div class="loading-text">
-    <span>Loading</span>
-    <span>Ancient Magic</span>
+<span>Loading</span>
+<span>Ancient Magic</span>
 </div>
 
 <div class="loading-dots"></div>
 
+<button class="tap-button" id="tapButton">
+Tap to Enter
+</button>
+
 </div>
 
 <script>
-const video = document.getElementById("introVideo");
 
-function redirect() {
-    window.location.href = "https://www.instagram.com/doric_jewelry";
+const video=document.getElementById("introVideo");
+const button=document.getElementById("tapButton");
+
+function redirect(){
+    window.location.href="https://www.instagram.com/doric_jewelry";
 }
 
-// Try autoplay
-video.play().catch(() => {
-    document.addEventListener(
-        "touchstart",
-        () => {
-            video.play();
-        },
-        { once: true }
-    );
+video.play().then(()=>{
+
+    video.onended=redirect;
+
+}).catch(()=>{
+
+    button.classList.add("show");
+
 });
 
-// Redirect when the video finishes
-video.addEventListener("ended", redirect);
+button.onclick=()=>{
 
-// Fallback after 5 seconds
-setTimeout(redirect, 5000);
+    button.style.display="none";
+
+    video.play();
+
+    video.onended=redirect;
+
+};
+
 </script>
 
 </body>
